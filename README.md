@@ -7,6 +7,10 @@ Para instalar ollama debemos acceder a la pagina de [Ollama](https://ollama.com/
 ````bash 
 $ curl -fsSL https://ollama.com/install.sh | sh 
 ````
+## 1.1 para actualizar los datos los comandos son 
+ git add .
+ git commit -m "UPDATE README.md"
+ git push -u origin main
 
 ## 2 Ejecutar el servidor 
 
@@ -18,7 +22,7 @@ $ ollama serve
 ## 3 Descargar algun modelo 
 en la pagina de [modelos](https://ollama.com/library) de Ollama se busca el modelo deseado y de descarga con el siguiente comando:
 ````bash
-$ Ollama pull tinyllama
+$ ollama pull tinyllama
 ````
 
 ## 4 Prueba de request o la API rest 
@@ -42,3 +46,21 @@ curl -X POST http://localhost:11434/api/generate -d '{
   "stream": false
 }' 
 ````
+## 5 realizar request a gruq
+
+````bash
+curl "https://api.groq.com/openai/v1/chat/completions" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${GROQ_API_KEY}" \
+  -d '{
+         "messages": [
+           {
+             "role": "user",
+             "content": "¿Por qué el cielo es azul?"
+           }
+         ],
+         "model": "gemma-7b-it",
+         "stream": false
+       }'
+  ````
